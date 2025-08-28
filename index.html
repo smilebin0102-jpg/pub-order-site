@@ -321,7 +321,7 @@
 
             try {
                 // 구글 Apps Script 웹앱 URL - 새로운 링크로 업데이트
-                const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoc6PDmM5ZAq-NskexM-PT3zdcemXB03JhWsgEmZbTFX33KmL3U-Y-32tCVeNiufS_VQ/exec';
+                const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby0aiZFMwT7lE1jCVz_7ugccuI3bugCnIJgBDIxMGp6W31rWMxelTpF4VKAaF7rDFF9_A/exec';
                 
                 // URL 파라미터로 데이터 전송
                 const params = new URLSearchParams({
@@ -336,6 +336,9 @@
                     method: 'GET',
                     mode: 'no-cors'
                 });
+
+                // 잠시 대기 (구글 시트 처리 시간)
+                await new Promise(resolve => setTimeout(resolve, 1000));
 
                 // 주문 완료 메시지
                 let orderSummary = '주문이 접수되었습니다!\n\n';
@@ -370,5 +373,5 @@
             }
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9762659ee3d5d1ee',t:'MTc1NjM2OTMwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9762802112fdeab3',t:'MTc1NjM3MDM5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

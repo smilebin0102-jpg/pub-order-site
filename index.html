@@ -319,26 +319,22 @@
             // 주문 내역을 문자열로 변환 (제육볶음-2, 콜라-1 형태)
             const orderItems = cart.map(item => `${item.name}-${item.quantity}`).join(', ');
 
-            // 구글 시트로 전송할 데이터
-            const orderData = {
-                테이블번호: selectedTable,
-                주문시각: orderTime,
-                주문내역: orderItems,
-                총액: total
-            };
-
             try {
-                // 구글 Apps Script 웹앱 URL
-                const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbylNCl6ATNPGr9GxMg27gFlG65bzPQsuPlkycIFrcjNcnUEH4OOEMYg3Bly7kH2GMynOw/exec';
+                // 구글 Apps Script 웹앱 URL - 새로운 링크로 업데이트
+                const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoc6PDmM5ZAq-NskexM-PT3zdcemXB03JhWsgEmZbTFX33KmL3U-Y-32tCVeNiufS_VQ/exec';
                 
-                // 구글 시트로 데이터 전송
-                const response = await fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(orderData)
+                // URL 파라미터로 데이터 전송
+                const params = new URLSearchParams({
+                    table: selectedTable,
+                    time: orderTime,
+                    items: orderItems,
+                    total: total
+                });
+
+                // 구글 시트로 데이터 전송 (GET 방식)
+                const response = await fetch(`${GOOGLE_SCRIPT_URL}?${params.toString()}`, {
+                    method: 'GET',
+                    mode: 'no-cors'
                 });
 
                 // 주문 완료 메시지
@@ -374,5 +370,5 @@
             }
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'976251661105aa69',t:'MTc1NjM2ODQ3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9762659ee3d5d1ee',t:'MTc1NjM2OTMwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

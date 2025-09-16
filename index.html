@@ -555,14 +555,9 @@
                             </div>
                         </div>
                         
-                        <div class="flex space-x-2">
-                            <button onclick="continueOrdering()" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 rounded-lg">
-                                계속 주문하기
-                            </button>
-                            <button onclick="closePaymentModal()" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-semibold py-3 rounded-lg">
-                                완료
-                            </button>
-                        </div>
+                        <button onclick="closePaymentModal()" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg">
+                            완료
+                        </button>
                     </div>
                 </div>
             `;
@@ -586,9 +581,14 @@
             });
         }
 
-        function continueOrdering() {
-            closePaymentModal();
-            // 주문 내역은 유지하고 테이블과 인원수만 리셋
+
+
+        function closePaymentModal() {
+            const modal = document.getElementById('payment-modal');
+            if (modal) {
+                modal.remove();
+            }
+            // 주문 완료 후 모든 정보 초기화
             cart = [];
             selectedTable = null;
             selectedPeople = 0;
@@ -600,13 +600,6 @@
             document.getElementById('people-count').textContent = '0';
             updateCartDisplay();
         }
-
-        function closePaymentModal() {
-            const modal = document.getElementById('payment-modal');
-            if (modal) {
-                modal.remove();
-            }
-        }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97fbaeec846dd1de',t:'MTc1Nzk3NjYyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97fc1fba966cea1f',t:'MTc1Nzk4MTI1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
